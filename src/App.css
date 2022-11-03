@@ -5,16 +5,7 @@
   font-family: 'Roboto', sans-serif;
 }
 
-
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+/* NAVBAR */
 
 .navbar {
   --bs-navbar-padding-y:0px;
@@ -67,38 +58,6 @@ a.Nav.Link{
   color: red;
 }
 
-.cta button {
-  padding: 9px 25px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  transition:  all 0.6s ease 0.05s;
-}
-
-.cta button:hover {
-  background-color: white;
-  color: black;
-}
-
-
-.wrap {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  background-image: url("./Pic/foto_inicio.jpg");
-  background-size:100%;
-   
-}
-
-.wrap_texto {
-
-  margin-left: 20px;
-}
-
 .btn {
   border-radius: 50px;
   margin-left: 10px;
@@ -111,3 +70,24 @@ a.Nav.Link{
   background-color:rgb(191, 189, 189) ;
   border-color: rgb(191, 189, 189);
 }
+
+/* BODY */
+
+.wrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-image: url("./Pic/foto_inicio.jpg");
+  background-size:100%;
+}
+
+.wrap_texto {
+
+  margin-left: 20px;
+}
+
+
+/* ItemListContainer / IntemList */
+
