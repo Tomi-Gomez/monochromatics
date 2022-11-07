@@ -1,13 +1,14 @@
-import Item from "./Item"
+import Item from "./ItemList"
 import ItemCount from "./ItemCount" 
+import ItemList from "./ItemList"
 
 const ItemListContainer = (props) => {
     return(
         <>
         <div>
         <h1><b><i>{props.greeting}</i></b></h1>
-            <Item/> 
         </div>
+        <ItemList/>
         <ItemCount />
         </>
     )
