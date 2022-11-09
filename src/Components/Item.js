@@ -13,12 +13,14 @@ return (
     <Card className="cardPadre">
     <Card.Img variant="top" src={props.Img}/>
     <Card.Body>
-    <Card.Title><h4>{props.title}</h4></Card.Title>
+    <Card.Title><h4><i>{props.title}</i></h4></Card.Title>
+    <div className="DivContenedorTotal">
     <ListGroup className="list-group-flush">
+        <ListGroup.Item><b>${props.price}</b></ListGroup.Item>
         <ListGroup.Item>{props.talles}</ListGroup.Item>
-        <ListGroup.Item>${props.price}</ListGroup.Item>
         <Link to={`/item/${props.id}`}><Button variant="outline-secondary" className="Button_Detalle">Detalle</Button></Link>
       </ListGroup>
+    </div>
     <ItemCount/>
     </Card.Body>
     </Card>
