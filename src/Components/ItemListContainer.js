@@ -17,7 +17,7 @@ const ItemListContainer = (props) => {
             .then(response => setDatos(response))
             .catch(err => console.log(err))  
         }else {
-            customFetch(2000,data.filter(Item => Item.category == IdCategory ))
+            customFetch(2000,data.filter(Item => Item.category === Number(IdCategory) ))
             .then(response => setDatos(response))
             .catch(err => console.log(err))
         }

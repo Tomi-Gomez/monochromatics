@@ -11,10 +11,10 @@ const ItemDetailContainer = (props) => {
 
     //componentDidMount
     useEffect(() => {
-        customFetch(2000,data.find(Item => Item.id == IdItem))
-        .then(response => setDato(response))
+        customFetch(2000,data)
+        .then(response => setDato(response.find((item)=> item.id === Number(IdItem))))
         .catch(err => console.log(err))
-    },[])
+    },[IdItem])
     
     return(
     <>
