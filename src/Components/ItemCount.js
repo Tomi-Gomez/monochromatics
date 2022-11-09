@@ -4,29 +4,33 @@ import Button from 'react-bootstrap/Button';
 
 const ItemCount = () => {
     const [rate,setRate] = useState(0);
-
-    const agregar = () => {
-        if (rate >= 10){
-            alert("Error no se puede agregar mas elementos")
-        } else {
-            setRate(rate + 1)
-        }
+    const stockMaximo = 10;
+    const stockMinimo = 0;
+    
+    const rateProducto = () => {
+      if(rate >= stockMaximo){
+      alert("No hay mas stock")
+      } else{
+        setRate(rate + 1)
+      }
+    }
+    
+    const restProducto = () => {
+      if(rate <= stockMinimo){
+       alert("Error,seleccione al menos 1 prenda") 
+      }else{
+        setRate(rate - 1)
+      }
     }
 
-    const sacar = () => {
-        if (rate <= 0){
-            alert("Error no se puede agregar mas elementos")
-        } else {
-            setRate(rate - 1)
-        }
-    }
-
-    return (
-        <>
-       <Button variant="outline-dark" onClick={agregar}> + </Button>  |  <span> {rate} </span> |<Button variant="outline-dark" onClick={sacar}> - </Button> 
-        <Button variant="info" >Agregar al carrito</Button>
-        </>
-    );
+return (
+    <>
+    <span>Cantidad: {rate} </span> 
+    <br></br> 
+    <Button className='Button_mas' variant="outline-dark" onClick={rateProducto}>+</Button> | <Button className='Button_menos' variant="outline-dark" onClick={restProducto}>-</Button>
+    <Button className='Button_Count' variant="info">Agregar al carrito</Button>    
+    </>
+  );
 }
 
 export default ItemCount;

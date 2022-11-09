@@ -1,39 +1,35 @@
-import ItemCount from "./ItemCount" 
 import {useEffect, useState} from 'react'
 import {data} from '../utils/data'
 import {customFetch} from '../utils/customFetch'
 import ItemList from "./ItemList"
+import "./Styles/ItemListContainer.css"
+import Item from './Item'
+import { useParams } from 'react-router-dom'
 
 const ItemListContainer = (props) => {
     const [datos,setDatos] = useState([])
+    const {IdCategory} = useParams()
 
-    //componentDidMount
+    //componentDidUpodate
     useEffect(() => {
-        customFetch(2000,data)
-        .then(response => setDatos(response))
-        .catch(err => console.log(err))
-    },[])
+        if(IdCategory == undefined){
+            customFetch(2000,data)
+            .then(response => setDatos(response))
+            .catch(err => console.log(err))  
+        }else {
+            customFetch(2000,data.filter(Item => Item.category == IdCategory ))
+            .then(response => setDatos(response))
+            .catch(err => console.log(err))
+        }
+
+    },[IdCategory])
     
     return(
     <>
-    <div>
+    <div className='title_Container'>
     <h1><b><i>{props.greeting}</i></b></h1>
     </div>
-
-    { 
-      datos.map(item => (
-        <ItemList
-        // thumbnails={buzo_beige_frente}
-        title={item.title}
-        genero={item.genero}
-        material={item.material}
-        talles={item.talles}
-        Img={Item.Img}
-        />
-      ))
-    }
-
-    <ItemCount />
+    <ItemList datos={datos}/>
     </>
     )
 }
