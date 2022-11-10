@@ -19,6 +19,7 @@ return (
         <ListGroup.Item><b>${props.price}</b></ListGroup.Item>
         <ListGroup.Item>{props.talles}</ListGroup.Item>
         <Link to={`/item/${props.id}`}><Button variant="outline-secondary" className="Button_Detalle">Detalle</Button></Link>
+        <hr/>
       </ListGroup>
     </div>
     <ItemCount/>
