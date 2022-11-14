@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Pic from '../Pic/carrito.png'
+import {Link} from "react-router-dom"
 
 const CardWidget = () => {
 
@@ -14,13 +15,16 @@ const CardWidget = () => {
   }, [rate])
 
     return (
-        <button type="button" class="btn btn-primary position-relative" onClick={rateCard}>
+      <>
+        <Link to="/cart"><button type="button" class="btn btn-primary position-relative" onClick={rateCard}>
             <img className="img_carrito" src={Pic}></img>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
               {rate}
               <span class="visually-hidden">unread messages</span>
             </span><i class="bi bi-cart4"></i>
           </button>
+        </Link>
+      </>
     )
 }
 

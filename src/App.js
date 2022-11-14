@@ -14,13 +14,13 @@ const App = () => {
     <>
     <BrowserRouter>
     <NavBar ItemList="Hombre" ItemList2= "Mujer" ItemList3= "Verano"/>
-    <Body/>
+    {/* <Body/> */}
     <Routes>
       <Route path='/'element={<ItemListContainer greeting="Productos"/>}/>
       <Route path='/category/:IdCategory' element={<ItemListContainer greeting="Productos"/>}/>
       <Route path='/item/:IdItem' element={<ItemDetailContainer greeting="Producto"/>}/>
       <Route pat='/cart' element={<Cart/>}/>
-      </Routes>
+    </Routes>
     </BrowserRouter>
     </>
   )

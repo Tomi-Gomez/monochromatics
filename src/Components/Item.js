@@ -22,7 +22,7 @@ return (
         <hr/>
       </ListGroup>
     </div>
-    <ItemCount/>
+    {/* <ItemCount/> */}
     </Card.Body>
     </Card>
     </>
