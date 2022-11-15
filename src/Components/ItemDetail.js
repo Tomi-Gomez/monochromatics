@@ -3,17 +3,20 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import "./Styles/ItemDetail.css"
 import ItemCount from './ItemCount';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import { CartContext } from './CartContext';
 
 
 const ItemDetail = ({dato}) => {
   const [datoCount,setDatoCount] = useState(0);
-
+  const {addToCart} = useContext(CartContext)
+  
   const onAdd = (rate) => {
     alert("Tu has seleccionado " + rate + " productos.");
     setDatoCount(rate)
+    addToCart(dato,rate)
   }
 
   return (
@@ -36,7 +39,7 @@ const ItemDetail = ({dato}) => {
         </Card.Text>
       </Card.Body>
       {
-        datoCount ===0
+        datoCount === 0
         ? <ItemCount stock={dato.stock} initial={datoCount} onAdd={onAdd}/>
         : <Link to="/cart" style={{textDecoration:"none"}}><Button variant="info">Terminar mi compra</Button></Link> 
       }

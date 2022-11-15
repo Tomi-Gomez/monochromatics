@@ -10,6 +10,7 @@ const Item = (props,id) => {
    
 return (
     <>
+    
     <Card className="cardPadre">
     <Card.Img variant="top" src={props.Img}/>
     <Card.Body>
