@@ -43,7 +43,7 @@ const Cart = () => {
                 <Card.Title><h4><i>{dato.titleDato}</i></h4></Card.Title>
                 <div className="DivContenedorTotal">
                 <ListGroup className="list-group-flush">
-                    <ListGroup.Item><b>${dato.priceDato}</b></ListGroup.Item>
+                    <ListGroup.Item><b>${dato.priceDato*dato.stockDato}</b></ListGroup.Item>
                     <ListGroup.Item><b>Stock:{dato.stockDato}</b></ListGroup.Item>
                 </ListGroup>
                 <Button className='Button_mas' variant="outline-dark" onClick={() => test.addToCart(dato.stockDato)}>Aagregar +</Button>
