@@ -1,7 +1,6 @@
 import { createContext} from 'react'
 import { useState} from 'react'
-import Cart from './Cart';
-import Item from './Item';
+
 
 
 export const CartContext = createContext();
@@ -16,15 +15,15 @@ const CartContextProvider = ({children}) => {
         setCarlist([
             ...CartList,    
             {
-                idDato: dato.id,
-                ImgDato: dato.Img,
-                titleDato: dato.title,
-                priceDato: dato.price,
-                stockDato: stock
+                id: dato.id,
+                Img: dato.Img,
+                title: dato.title,
+                price: dato.price,
+                stock: dato.stock
             }
         ])
         } else{
-            add.stockDato += stock;
+            add.stock += stock;
         }
     }
 
@@ -38,6 +37,8 @@ const CartContextProvider = ({children}) => {
         let result = CartList.filter(dato => dato.id !== id);
         setCarlist(result);
     }
+
+  
 
     return(
         <>

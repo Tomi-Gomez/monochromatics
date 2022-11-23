@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react'
 import Pic from '../Pic/carrito.png'
 import {Link} from "react-router-dom"
 
+
 const CardWidget = () => {
+
 
   const [rate,setRate] = useState(0);
 

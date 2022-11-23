@@ -23,30 +23,30 @@ const Cart = () => {
             <div className="contenedor_Button">
                 <Link to="/"><Button variant="info" className="Button_Contenedor">Volver a comprar</Button></Link>
             </div>
-            <div className="contenedor_Mensaje">
-            <Button variant="info" className="texto_cantidad">Tu carrito esta vacio</Button>
-            </div>
+            <Button variant="outline-danger" className="button_EP" onClick={test.clear}>Eliminar productos</Button>
         </div>
         <hr/>
             {
             test.CartList.length === 0 
-            ?  <Button variant="outline-danger" onClick={test.clear}>Eliminar productos</Button>
-            : test.CartList.map(dato => 
+            ?  <div className="contenedor_Mensaje">
+            <Button variant="info" className="texto_cantidad">Tu carrito esta vacio</Button>
+            </div>
+            :  test.CartList.map(dato => 
                 <Card className="cardPadre">
                 <Figure.Image
                 width={171}
                 height={180}
                 alt="171x180"
-                src={dato.ImgDato}
+                src={dato.Img}
                 />
                 <Card.Body>
-                <Card.Title><h4><i>{dato.titleDato}</i></h4></Card.Title>
+                <Card.Title><h4><i>{dato.title}</i></h4></Card.Title>
                 <div className="DivContenedorTotal">
                 <ListGroup className="list-group-flush">
-                    <ListGroup.Item><b>${dato.priceDato*dato.stockDato}</b></ListGroup.Item>
-                    <ListGroup.Item><b>Stock:{dato.stockDato}</b></ListGroup.Item>
+                    <ListGroup.Item><b>${dato.price*dato.stock}</b></ListGroup.Item>
+                    <ListGroup.Item><b>Stock:{dato.stock}</b></ListGroup.Item>
                 </ListGroup>
-                <Button className='Button_mas' variant="outline-dark" onClick={() => test.addToCart(dato.stockDato)}>Aagregar +</Button>
+                <Button className='Button_mas' variant="outline-dark" onClick={() => test.addToCart(dato.stock)}>Aagregar +</Button>
                 <Button variant="outline-danger" onClick={() => test.removeItem(dato.id)}>Borrar </Button>
                 </div>
                 </Card.Body>
