@@ -46,11 +46,21 @@ const CartContextProvider = ({children}) => {
         setCarlist(result);
     }
 
-    
+    //Agrega Items al CartWidget
+    const calcularStock = () => {
+        let stock = CartList.map(dato => dato.stock);
+        return stock.reduce(((accumulator, currentValue) => accumulator + currentValue), 0);
+    }
 
     return(
         <>
-        <CartContext.Provider value={{CartList , addToCart ,clear,removeItem}}>
+        <CartContext.Provider value={{
+            CartList, 
+            addToCart,
+            clear,
+            removeItem,
+            calcularStock
+            }}>
         {children}
         </CartContext.Provider>
         </>

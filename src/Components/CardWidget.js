@@ -1,27 +1,18 @@
-import { useEffect, useState } from 'react'
+
 import Pic from '../Pic/carrito.png'
 import {Link} from "react-router-dom"
-
+import { CartContext } from './CartContext';
+import { useContext} from 'react';
 
 const CardWidget = () => {
-
-
-  const [rate,setRate] = useState(0);
-
-  const rateCard = () => {
-    setRate (rate + 1)
-  }
-
-  useEffect (() =>{
-    console.log("Se ha actulizado la app")
-  }, [rate])
+  const test = useContext(CartContext);
 
     return (
       <>
-        <Link to="/cart"><button type="button" class="btn btn-primary position-relative" onClick={rateCard}>
+        <Link to="/cart"><button type="button" class="btn btn-primary position-relative">
             <img className="img_carrito" src={Pic}></img>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              {rate}
+              {test.calcularStock}
               <span class="visually-hidden">unread messages</span>
             </span><i class="bi bi-cart4"></i>
           </button>
