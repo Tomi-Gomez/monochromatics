@@ -1,5 +1,4 @@
 import { Card } from "react-bootstrap";
-import ItemCount from "./ItemCount";
 import "./Styles/Item.css"
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';

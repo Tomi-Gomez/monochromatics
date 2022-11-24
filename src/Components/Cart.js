@@ -20,7 +20,7 @@ const Cart = () => {
         </div>
         <div className="contendor-selectores">
             <div className="contenedor_Button">
-                <Link to="/"><Button variant="info" className="Button_Contenedor">Volver a comprar</Button></Link>
+                <Link to="/"><Button variant="info" className="Button_Contenedor"><b>Continuar comprando</b></Button></Link>
             </div>
             <Button variant="outline-danger" className="button_EP" onClick={test.clear}>Eliminar productos</Button>
         </div>
@@ -31,7 +31,7 @@ const Cart = () => {
             <Button variant="info" className="texto_cantidad">Tu carrito esta vacio</Button>
             </div>
             :  test.CartList.map(dato => 
-                <Card className="cardPadre">
+                <Card key={dato.id} className="cardPadre">
                 <Figure.Image
                 width={171}
                 height={180}
@@ -45,7 +45,6 @@ const Cart = () => {
                     <ListGroup.Item><b>${dato.price*dato.stock}</b></ListGroup.Item>
                     <ListGroup.Item><b>Stock:{dato.stock}</b></ListGroup.Item>
                 </ListGroup>
-                {/* <Button className='Button_mas' variant="outline-dark" onClick={() => test.addToCart(dato.stock)} >Agregar + </Button> */}
                 <Button variant="outline-danger" onClick={() => test.removeItem(dato.id)}>Borrar </Button>
                 </div>
                 </Card.Body>

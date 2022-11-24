@@ -37,7 +37,7 @@ return (
     {
       stock && rate
       ? <Button variant="info" onClick={() => onAdd(rate)}>Agregar al Carrito</Button>
-      : <Button variant="info" disable>Agregar al Carrito</Button>
+      : <Button variant="info">Agregar al Carrito</Button>
     }
     </div>    
     </>

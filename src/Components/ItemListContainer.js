@@ -1,31 +1,32 @@
 import {useEffect, useState} from 'react'
-import {data} from '../utils/data'
-import {customFetch} from '../utils/customFetch'
 import ItemList from "./ItemList"
 import "./Styles/ItemListContainer.css"
-import Item from './Item'
 import { useParams } from 'react-router-dom'
+import Body from "./Body"
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../utils/firebaseConfig"
 
 const ItemListContainer = (props) => {
     const [datos,setDatos] = useState([])
     const {IdCategory} = useParams()
 
     //componentDidUpodate
-    useEffect(() => {
-        if(IdCategory == undefined){
-            customFetch(2000,data)
-            .then(response => setDatos(response))
-            .catch(err => console.log(err))  
-        }else {
-            customFetch(2000,data.filter(Item => Item.category === Number(IdCategory) ))
-            .then(response => setDatos(response))
-            .catch(err => console.log(err))
+    useEffect( () => {
+        const getData = async () => {
+        const querySnapshot = await getDocs(collection(db, "productos"));
+        const dataFromFirestore = querySnapshot.docs.map(dato => ({
+            id:dato.id,
+            ...dato.data()
+                      
+        }))
+        setDatos(dataFromFirestore)
         }
-
-    },[IdCategory])
+        getData() 
+    },[IdCategory]);
     
     return(
     <>
+    <Body/>
     <div className='title_Container'>
     <h1><b><i>{props.greeting}</i></b></h1>
     </div>

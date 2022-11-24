@@ -9,12 +9,12 @@ const CardWidget = () => {
 
     return (
       <>
-        <Link to="/cart"><button type="button" class="btn btn-primary position-relative">
+        <Link to="/cart"><button type="button" className="btn btn-primary position-relative">
             <img className="img_carrito" src={Pic}></img>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
               {test.calcularStock()}
-              <span class="visually-hidden">unread messages</span>
-            </span><i class="bi bi-cart4"></i>
+              <span className="visually-hidden">unread messages</span>
+            </span><i className="bi bi-cart4"></i>
           </button>
         </Link>
       </>
