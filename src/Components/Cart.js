@@ -12,8 +12,7 @@ import Figure from 'react-bootstrap/Figure';
 
 const Cart = () => {
     const test = useContext(CartContext);
-    
-
+   
     return (
         <>
         <div className="contedor_Carrito">
@@ -46,7 +45,7 @@ const Cart = () => {
                     <ListGroup.Item><b>${dato.price*dato.stock}</b></ListGroup.Item>
                     <ListGroup.Item><b>Stock:{dato.stock}</b></ListGroup.Item>
                 </ListGroup>
-                <Button className='Button_mas' variant="outline-dark" onClick={() => test.addToCart(dato.stock)}>Aagregar +</Button>
+                {/* <Button className='Button_mas' variant="outline-dark" onClick={() => test.addToCart(dato.stock)} >Agregar + </Button> */}
                 <Button variant="outline-danger" onClick={() => test.removeItem(dato.id)}>Borrar </Button>
                 </div>
                 </Card.Body>

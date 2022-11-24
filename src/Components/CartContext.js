@@ -19,11 +19,19 @@ const CartContextProvider = ({children}) => {
                 Img: dato.Img,
                 title: dato.title,
                 price: dato.price,
-                stock: dato.stock
+                stock: stock
             }
         ])
         } else{
-            add.stock += stock;
+            const cartAux = CartList.map( p =>{
+                if(p.id === dato.id){
+                const newProd = {...dato,stock:p.stock + stock}
+                return newProd
+                }
+                return p
+                },
+            )
+            setCarlist(cartAux)
         }
     }
 
@@ -38,7 +46,7 @@ const CartContextProvider = ({children}) => {
         setCarlist(result);
     }
 
-  
+    
 
     return(
         <>
