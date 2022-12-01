@@ -5,25 +5,41 @@ import { useParams } from 'react-router-dom'
 import Body from "./Body"
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../utils/firebaseConfig"
+import {firestoreFetch} from "../utils/firestoreFetch"
 
 const ItemListContainer = (props) => {
     const [datos,setDatos] = useState([])
     const {IdCategory} = useParams()
 
-    //componentDidUpodate
-    useEffect( () => {
-        const getData = async () => {
-        const querySnapshot = await getDocs(collection(db, "productos"));
-        const dataFromFirestore = querySnapshot.docs.map(dato => ({
-            id:dato.id,
-            ...dato.data()
+   //componentDidUpdate
+   useEffect(() => {
+    firestoreFetch(IdCategory)
+        .then(result => setDatos(result))
+        .catch(err => console.log(err));
+    }, [IdCategory]);
+
+    //componentWillUnmount
+    useEffect(() => {
+        return (() => {
+            setDatos([]);
+        })
+    }, []);
+
+
+
+    // useEffect( () => {
+    //     const getData = async () => {
+    //     const querySnapshot = await getDocs(collection(db, "productos"));
+    //     const dataFromFirestore = querySnapshot.docs.map(dato => ({
+    //         id:dato.id,
+    //         ...dato.data()
                       
-        }))
-        setDatos(dataFromFirestore)
-        }
-        getData() 
-    },[IdCategory]);
-    
+    //     }))
+    //     setDatos(dataFromFirestore)
+    //     }
+    //     getData() 
+    // },[IdCategory]);
+
     return(
     <>
     <Body/>
