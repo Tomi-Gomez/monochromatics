@@ -1,4 +1,4 @@
-import './App.css'
+import '../src/Components/Styles/App.css'
 import NavBar from './Components/NavBar'
 import ItemListContainer from './Components/ItemListContainer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
