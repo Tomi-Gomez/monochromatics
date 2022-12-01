@@ -15,7 +15,6 @@ const App = () => {
     <CartContextProvider>
     <BrowserRouter>
     <NavBar ItemList="Hombre" ItemList2= "Mujer" ItemList3= "Verano"/>
-    {/* <Body/> */}
     <Routes>
       <Route path='/'element={<ItemListContainer greeting="Productos"/>}/>
       <Route path='/category/:IdCategory' element={<ItemListContainer greeting="Productos"/>}/>
