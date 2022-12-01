@@ -7,7 +7,7 @@ const CartContextProvider = ({children}) => {
 const [CartList,setCarlist] = useState([]) 
 
 const addToCart = (dato,stock) => {
-    let add = CartList.find(producto => producto.idDato===dato.id)
+    let add = CartList.find(producto => producto.id===dato.id)
     if(add === undefined){
     setCarlist([
         ...CartList,    
@@ -51,7 +51,7 @@ const calcularStock = () => {
 
 //Carga el Total de los items
 const calcularSubtotal = () => {
-    let Subtotal = CartList.map(dato => dato.price);
+    let Subtotal = CartList.map(dato => dato.price*dato.stock);
     return Subtotal.reduce(((accumulator, currentValue) => accumulator + currentValue), 0);
 }
 

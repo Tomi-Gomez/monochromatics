@@ -80,7 +80,7 @@ const Cart = () => {
         {
             test.CartList.length === 0 
             ?  <div className="contenedor_Mensaje">
-            <Button variant="info" className="texto_cantidad">Tu carrito esta vacio</Button>
+            <Button variant="info" className="Carrito_Vacio">Tu carrito esta vacio</Button>
             </div>
         :  test.CartList.map(dato => 
             <Card key={dato.id} className="cardPadre">

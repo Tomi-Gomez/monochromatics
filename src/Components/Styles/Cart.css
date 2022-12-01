@@ -10,6 +10,10 @@
     display: contents;
 }
 
+.Carrito_Vacio{
+    align-items: center;
+}
+
 .contenedor_Mensaje{
     float: right;
     padding-right: 20px;
