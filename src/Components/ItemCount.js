@@ -5,10 +5,6 @@ import "./Styles/ItemCount.css"
 
 const ItemCount = ({stock = 0,initial = 1,onAdd}) => {
     const [rate,setRate] = useState(0);
-    
-    // useEffect(() => {
-    //   setRate(initial)
-    // },[])
 
     const rateProducto = () => {
       if(rate >= stock){

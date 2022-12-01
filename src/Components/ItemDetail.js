@@ -1,4 +1,3 @@
-
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import "./Styles/ItemDetail.css"
@@ -7,6 +6,7 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { CartContext } from './CartContext';
+import swal from 'sweetalert';
 
 
 const ItemDetail = ({dato}) => {
@@ -14,7 +14,11 @@ const ItemDetail = ({dato}) => {
   const {addToCart} = useContext(CartContext)
   
   const onAdd = (rate) => {
-    alert("Tu has seleccionado " + rate + " productos.");
+    swal({
+      icon:"warning",
+      text:"Tu has seleccionado " + rate + " productos.",
+      buttons:"Confirmar"
+    });
     setDatoCount(rate)
     addToCart(dato,rate)
   }
@@ -25,7 +29,7 @@ const ItemDetail = ({dato}) => {
       dato && dato.Img
       ?
       <Card className="contenedorCard">
-     <Card.Header><i>{dato.title}</i></Card.Header>
+      <Card.Header><i>{dato.title}</i></Card.Header>
       <Card.Img variant="top" src={dato.Img} />
       <Card.Body>
       <ListGroup className="list-group-flush">

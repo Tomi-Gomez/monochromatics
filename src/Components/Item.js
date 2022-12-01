@@ -9,7 +9,6 @@ const Item = (props,id) => {
    
 return (
     <>
-    
     <Card className="cardPadre">
     <Card.Img variant="top" src={props.Img}/>
     <Card.Body>
@@ -18,11 +17,11 @@ return (
     <ListGroup className="list-group-flush">
         <ListGroup.Item><b>${props.price}</b></ListGroup.Item>
         <ListGroup.Item>{props.talles}</ListGroup.Item>
+        <ListGroup.Item>Stock: {props.stock}</ListGroup.Item>
         <Link to={`/item/${props.id}`}><Button variant="outline-secondary" className="Button_Detalle">Detalle</Button></Link>
         <hr/>
       </ListGroup>
     </div>
-    {/* <ItemCount/> */}
     </Card.Body>
     </Card>
     </>
