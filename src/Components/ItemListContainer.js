@@ -3,9 +3,8 @@ import ItemList from "./ItemList"
 import "./Styles/ItemListContainer.css"
 import { useParams } from 'react-router-dom'
 import Body from "./Body"
-import { collection, getDocs } from "firebase/firestore";
 import { db } from "../utils/firebaseConfig"
-import {firestoreFetch} from "../utils/firestoreFetch"
+import { query,  where, collection, getDocs } from '@firebase/firestore';
 
 const ItemListContainer = (props) => {
     const [datos,setDatos] = useState([])
@@ -13,32 +12,39 @@ const ItemListContainer = (props) => {
 
    //componentDidUpdate
    useEffect(() => {
-    firestoreFetch(IdCategory)
-        .then(result => setDatos(result))
-        .catch(err => console.log(err));
-    }, [IdCategory]);
+    // creamos una función que va a obtener los datos de firebase
+    const getData = async () => {
+    // con una condicional, si no tiene categorías,
+    const queryRef = !IdCategory
+    // va a traer todos los productos
+    ? collection(db, "productos")
+    // si tiene categorías, firevase va a filtrarlas
+    : query(
+    collection(db, "productos"),
+    where("category", "==", parseInt(IdCategory))
+    );
+    // recibimos los datos
+    const response = await getDocs(queryRef);
+    // y hacemos un map para crear objetos con esos datos.
+    const productos = response.docs.map((docs) => {
+    const newProduct = {
+    ...docs.data(),
+    id: docs.id,
+    };
+    // lo retornamos
+    return newProduct;
+    });
+    setTimeout(() => {
+    // simulamos una demora de 2' y actualizamos el estado datos con los productos
+    // ya sea con los que filtramos o con todos.
+    setDatos(productos);
+    }, 2000)
+    };
+    // llamamos a la función
+    getData();
+    
+    }, [IdCategory])
 
-    //componentWillUnmount
-    useEffect(() => {
-        return (() => {
-            setDatos([]);
-        })
-    }, []);
-
-
-
-    // useEffect( () => {
-    //     const getData = async () => {
-    //     const querySnapshot = await getDocs(collection(db, "productos"));
-    //     const dataFromFirestore = querySnapshot.docs.map(dato => ({
-    //         id:dato.id,
-    //         ...dato.data()
-                      
-    //     }))
-    //     setDatos(dataFromFirestore)
-    //     }
-    //     getData() 
-    // },[IdCategory]);
 
     return(
     <>
